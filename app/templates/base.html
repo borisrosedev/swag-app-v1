@@ -1,0 +1,32 @@
+<!DOCTYPE html>  
+<!-- What's above is a comment just like me -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Swag: #1 Clothes Shop">
+        <meta name="author" content="Boris R">
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <!--FONTAWESOME-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <!--BOOTSTRAP-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+        <!--ANIMATE CSS-->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <title>{% block title %}Swag{% endblock title %}</title>
+        <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js" integrity="sha384-t4DxZSyQK+0Uv4jzy5B0QyHyWQD2GFURUmxKMBVww9+e2EJ0ei/vCvv7+79z0fkr" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename="css/base.css") }}">
+        {% block custom_css %}{% endblock custom_css %}
+    </head>
+
+    <body>
+        <div id="root">
+            {% block custom_root_content %}{% endblock custom_root_content %}
+        </div>
+        {% block custom_js %}{% endblock custom_js %}
+    </body>
+
+</html>
