@@ -9,13 +9,19 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+
+
 .custom-anchor {
-    &:hover {
-        cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.landing__main {
+.landing__main,
+.login__main,
+.dashboard__main,
+.not-found__main,
+.error__main {
   align-items: center;
   justify-content: center;
 }
@@ -26,6 +32,37 @@
   background-color: rgba(0, 0, 0, 0.9);
   padding-top: 10vh;
   padding-bottom: 100px;
+}
+
+
+.dashboard__main {
+  background-color: rgba(0, 0, 0, 0.9);
+
+
+
+  figure {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+.dashboard__user-info-section {
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    padding-bottom: 100px;
+    width: 100%;
+
 }
 
 .home__hero-section {
@@ -57,31 +94,105 @@
 }
 
 
+.custom-error-card {
+  width: 300px;
+}
+
+
+
+
+.dashboard__user-purchase-chart-section {
+  margin-block: 30px;
+ 
+}
+
+.dashboard__chart {
+  width: 500px;
+}
+
+
+.dashboard__main {
+
+  .custom-card-text {
+    display: flex;
+    margin-inline:10px;
+    width: max-content;
+    align-items: center;
+    
+    i {
+      margin-right: 10px;
+    }
+  }
+
+  .custom-card-text-section {
+    display: flex;
+    margin-block: 20px;
+  }
+}
+
 /* MEDIA QUERIES */
 
 
+
+
 @media only screen and (max-width: 600px) {
+
+  .dashboard__chart {
+    width: 300px;
+  }
+
+
+  .dashboard__main {
+
+    .custom-card {
+      width: 300px;
+    
+    }
+    .custom-card-text {
+      display: flex;
+      margin-inline:10px;
+      width: max-content;
+      align-items: center;
+
+      
+      i {
+        margin-right: 10px;
+      }
+    }
+
+    .custom-card-text-section {
+      display: flex;
+
+      align-items: center;
+      justify-self: center;
+      flex-direction: column;
+    }
+  }
+
+
   
-    .home-hero__cards-section {
+
+  .home-hero__cards-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     .custom-card {
-        height: 800px;
-        width: 90%;
-        margin-right: 0px;
-        margin-block: 10px;
+      height: 800px;
+      width: 90%;
+      margin-right: 0px;
+      margin-block: 10px;
 
-        p {
+      p {
         word-break: break-all;
-        }
+      }
 
-        img {
+      img {
         height: 500px;
         object-fit: cover;
-        }
+      }
     }
-    }
-
+  }
 }
+
+

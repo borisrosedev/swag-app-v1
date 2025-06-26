@@ -1,11 +1,13 @@
-{% extends "base.html" %} 
-{% block custom_root_content %}
+{% extends "base.html" %} {% block custom_root_content %}
 
 <nav class="navbar bg-body-tertiary fixed-top">
   <div class="container-fluid">
     <a
       class="navbar-brand text-success custom-anchor"
-      href="#"
+      hx-get="/home"
+      hx-trigger="click"
+      hx-target="#root"
+      hx-swap="outerHTML"
       >Swag</a
     >
 
@@ -40,11 +42,7 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a
-              class="nav-link active custom-anchor"
-              href="#"
-              >Home</a
-            >
+            <a class="nav-link active custom-anchor" href="/home">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -69,65 +67,51 @@
         </ul>
         <!--buttons-->
         <section class="d-flex my-2 w-100, justify-content-between">
-            {% if session["username"] %}
-            <button 
-              class="btn btn-success"
-              hx-get="/dashboard"
-              hx-target="#root"
-              hx-swap="outerHTML"
-              hx-trigger="click"
-            >Dashboard</button>
-            <button 
-              id="logout-button"
-              class="btn btn-danger"
-              hx-get="/logout"
-              hx-target="#root"
-              hx-swap="outerHTML"
-              hx-trigger="click"
-              >Log out</button>
-            {% else %}
-            <button 
-              class="btn btn-success"
-              hx-get="/login"
-              hx-target="#root"
-              hx-swap="outerHTML"
-              hx-trigger="click"
-            >Log in</button>
-            <button 
-              class="btn btn-outline-success"
-              hx-get="/signup"
-              hx-target="#root"
-              hx-swap="outerHTML"
-              hx-trigger="click"
-              >Sign up</button>
-            {% endif %}
+          <button class="btn btn-outline-success">Sign up</button>
         </section>
       </div>
     </div>
   </div>
 </nav>
-<main id="home-main" class="app__main home__main">
-  
 
-  <section class="home__hero-section">
-
-    <section class="home-hero__cards-section">
-   
-      {% for card in cards  %}
-        <div class="card custom-card">
-          <img src="{{ card["img_url"] }}" class="card-img-top" alt="{{ card["img_alt"]}}">
-          <div class="card-body">
-            <h5 class="card-title">{{ card["title"] }}</h5>
-            <p class="card-text">{{ card["description"][0:100]}}...</p>
-            <button data-id="{{card["id"]}}" class="btn btn-outline-success">Show</button>
-          </div>
-        </div>
-      {% endfor %}
-
-    <section>
-
-
+<!--login main-->
+<main id="login-main" class="app__main login__main">
+  <section class="login__form-section">
+    <form 
+        hx-post="/auth/login"
+        hx-target="#root"
+        hx-swap="outerHTML"
+        hx-trigger="submit"
+    >
+      <div class="mb-3">
+        <label for="email" class="form-label text-light">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          id="email"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label text-light">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="password"
+        />
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" name="keep-connection" class="form-check-input" id="keep-connection" />
+        <label class="form-check-label text-light" for="keep-connection">Stay logged in</label>
+      </div>
+      <button 
+        type="submit" 
+        class="btn btn-success"
+      >Submit</button>
+    </form>
   </section>
-
 </main>
+
 {% endblock custom_root_content %}

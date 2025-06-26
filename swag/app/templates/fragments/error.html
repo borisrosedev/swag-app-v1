@@ -5,7 +5,10 @@
   <div class="container-fluid">
     <a
       class="navbar-brand text-success custom-anchor"
-      href="#"
+      hx-get="/home"
+      hx-trigger="click"
+      hx-target="#root"
+      hx-swap="outerHTML"
       >Swag</a
     >
 
@@ -42,7 +45,7 @@
           <li class="nav-item">
             <a
               class="nav-link active custom-anchor"
-              href="#"
+              href="/home"
               >Home</a
             >
           </li>
@@ -69,23 +72,6 @@
         </ul>
         <!--buttons-->
         <section class="d-flex my-2 w-100, justify-content-between">
-            {% if session["username"] %}
-            <button 
-              class="btn btn-success"
-              hx-get="/dashboard"
-              hx-target="#root"
-              hx-swap="outerHTML"
-              hx-trigger="click"
-            >Dashboard</button>
-            <button 
-              id="logout-button"
-              class="btn btn-danger"
-              hx-get="/logout"
-              hx-target="#root"
-              hx-swap="outerHTML"
-              hx-trigger="click"
-              >Log out</button>
-            {% else %}
             <button 
               class="btn btn-success"
               hx-get="/login"
@@ -94,38 +80,30 @@
               hx-trigger="click"
             >Log in</button>
             <button 
+              id="signup-button"
               class="btn btn-outline-success"
               hx-get="/signup"
               hx-target="#root"
               hx-swap="outerHTML"
               hx-trigger="click"
               >Sign up</button>
-            {% endif %}
         </section>
       </div>
     </div>
   </div>
 </nav>
-<main id="home-main" class="app__main home__main">
+<main id="error-main" class="app__main error__main">
   
 
-  <section class="home__hero-section">
+  <section class="error__message-section">
 
-    <section class="home-hero__cards-section">
-   
-      {% for card in cards  %}
-        <div class="card custom-card">
-          <img src="{{ card["img_url"] }}" class="card-img-top" alt="{{ card["img_alt"]}}">
-          <div class="card-body">
-            <h5 class="card-title">{{ card["title"] }}</h5>
-            <p class="card-text">{{ card["description"][0:100]}}...</p>
-            <button data-id="{{card["id"]}}" class="btn btn-outline-success">Show</button>
-          </div>
+    <div class="card text-bg-danger mb-3 custom-error-card">
+        <div class="card-header">{{error["header"] if error["header"] else "Error" }}</div>
+        <div class="card-body">
+            <h5 class="card-title">{{error["title"]}}</h5>
+            <p class="card-text">{{error["message"]}}</p>
         </div>
-      {% endfor %}
-
-    <section>
-
+    </div>
 
   </section>
 

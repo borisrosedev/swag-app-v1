@@ -12,3 +12,8 @@
         class="btn btn-success animate__animated animate__fadeIn">Come in</button>
 </main>
 {% endblock custom_root_content %}
+{% block custom_js %}
+    <script 
+        src="{{ url_for('static', filename="js/customGsap.js")}}">
+    </script>
+{% endblock custom_js %}

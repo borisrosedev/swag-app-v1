@@ -1,0 +1,13 @@
+{% block custom_root_content %}
+<main 
+    id="not-found-main" 
+    class="app__main not-found__main"
+>
+    <h1 class="not-found__h1 text-danger">404</h1>
+    <button 
+        hx-get="/home" 
+        hx-target="#root"
+        hx-swap="outerHTML" 
+        class="btn btn-success">Back to Swag Home Page</button>
+</main>
+{% endblock custom_root_content %}

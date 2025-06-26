@@ -6,6 +6,16 @@
         <meta name="description" content="Swag: #1 Clothes Shop">
         <meta name="author" content="Boris R">
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <!-- Charts.js -->
+        <script src="
+                https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js
+        "></script>
+        <!--GSAP-->
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+        
+        <!--ScrollTrigger GSAP Plugin -->
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+        
         <!--FONTAWESOME-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
         <!--BOOTSTRAP-->
@@ -26,7 +36,14 @@
         <div id="root">
             {% block custom_root_content %}{% endblock custom_root_content %}
         </div>
-        {% block custom_js %}{% endblock custom_js %}
+        {% block custom_js %}
+            <script 
+                src="{{ url_for('static', filename="js/bootstrapDebugger.js")}}">
+            </script>
+            <script 
+                src="{{ url_for('static', filename="js/customGsap.js")}}">
+            </script>
+        {% endblock custom_js %}
     </body>
 
 </html>

@@ -1,0 +1,134 @@
+{% extends "base.html" %} {% block custom_root_content %}
+
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <a
+      class="navbar-brand text-success custom-anchor"
+      hx-get="/home"
+      hx-trigger="click"
+      hx-target="#root"
+      hx-swap="outerHTML"
+      >Swag</a
+    >
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!--offcanvas body-->
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active custom-anchor" href="/home">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              More
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Men</a></li>
+              <li><a class="dropdown-item" href="#">Women</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="#">About us</a></li>
+              <li><a class="dropdown-item" href="#">Contact us</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!--buttons-->
+        <section class="d-flex my-2 w-100, justify-content-between">
+          <button
+            id="signup-button"
+            class="btn btn-outline-danger"
+            hx-get="/logout"
+            hx-target="#root"
+            hx-swap="outerHTML"
+            hx-trigger="click"
+          >
+            Logout
+          </button>
+        </section>
+      </div>
+    </div>
+  </div>
+</nav>
+<main id="dashboard-main" class="app__main dashboard__main">
+  <section class="dashboard__user-info-section">
+    <h1 class="text-light">Bonjour {{user["firstname"].capitalize()}}</h1>
+    <figure>
+      <img src="{{user["photo_url"]}}" class="" alt="Image of
+      {{user.get_fullname()}}">
+    </figure>
+    <div class="card text-center custom-card">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="true" href="#">Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Messages</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">What we know about you</h5>
+        <section class="custom-card-text-section">
+          <p class="custom-card-text">
+            <i class="fa-solid fa-circle-user"></i
+            ><span>Fullname:{{ user.get_fullname()}}</span>
+          </p>
+          <p class="custom-card-text">
+            <i class="fa-solid fa-envelope"></i
+            ><span>Email:{{user["email"]}}</span>
+          </p>
+        </section>
+        <a href="#" class="btn btn-danger">Delete Account</a>
+      </div>
+    </div>
+  </section>
+  <section class="dashboard__user-purchase-chart-section">
+    <div class="dashboard__chart"><canvas id="purchase"></canvas></div>
+  </section>
+</main>
+{% endblock custom_root_content %}
+{% block custom_js %}
+            <script 
+                src="{{ url_for('static', filename="js/bootstrapDebugger.js")}}">
+            </script>
+            <script 
+                src="{{ url_for('static', filename="js/purchase.js")}}">
+            </script>
+{% endblock custom_js %}
