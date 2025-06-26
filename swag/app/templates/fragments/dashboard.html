@@ -7,7 +7,7 @@
       hx-get="/home"
       hx-trigger="click"
       hx-target="#root"
-      hx-swap="outerHTML"
+      hx-swap="innerHTML"
       >Swag</a
     >
 
@@ -72,7 +72,7 @@
             class="btn btn-outline-danger"
             hx-get="/logout"
             hx-target="#root"
-            hx-swap="outerHTML"
+            hx-swap="innerHTML"
             hx-trigger="click"
           >
             Logout
@@ -124,11 +124,3 @@
   </section>
 </main>
 {% endblock custom_root_content %}
-{% block custom_js %}
-            <script 
-                src="{{ url_for('static', filename="js/bootstrapDebugger.js")}}">
-            </script>
-            <script 
-                src="{{ url_for('static', filename="js/purchase.js")}}">
-            </script>
-{% endblock custom_js %}

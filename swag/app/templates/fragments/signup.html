@@ -67,28 +67,44 @@
         </ul>
         <!--buttons-->
         <section class="d-flex my-2 w-100, justify-content-between">
-          <button 
-            class="btn btn-outline-success"
-            hx-get="/signup"
-            hx-target="#root"
-            hx-trigger="click"
-            hx-swap="innerHTML"
-          >Sign up</button>
+          <button class="btn btn-outline-success">Sign up</button>
         </section>
       </div>
     </div>
   </div>
 </nav>
 
-<!--login main-->
-<main id="login-main" class="app__main login__main">
-  <section class="login__form-section">
+<!--signup main-->
+<main id="signup-main" class="app__main signup__main">
+  <section class="signup__form-section">
     <form 
-        hx-post="/auth/login"
+        hx-post="/users/create"
+        method="POST"
         hx-target="#root"
         hx-swap="innerHTML"
         hx-trigger="submit"
+        enctype="multipart/form-data"
+        hx-encoding="multipart/form-data"
     >
+     <div class="mb-3">
+        <label for="firstname" class="form-label text-light">Firstname</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstname"
+          id="firstname"
+        />
+      </div>
+
+       <div class="mb-3">
+        <label for="lastname" class="form-label text-light">Lastname</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          id="lastname"
+        />
+      </div>
       <div class="mb-3">
         <label for="email" class="form-label text-light">Email address</label>
         <input
@@ -112,11 +128,16 @@
         <input type="checkbox" name="keep-connection" class="form-check-input" id="keep-connection" />
         <label class="form-check-label text-light" for="keep-connection">Stay logged in</label>
       </div>
+      <input type="file" name="photo" accept="image/*" onchange="previewPhoto(event)">
       <button 
         type="submit" 
         class="btn btn-success"
       >Submit</button>
     </form>
+
+
+    <div id="preview"></div>
+    <div id="result"></div>
   </section>
 </main>
 

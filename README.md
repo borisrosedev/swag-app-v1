@@ -20,5 +20,6 @@ Alembic provides for the creation, management, and invocation of change manageme
 ```bash
 source /path/to/yourproject/.venv/bin/activate
 alembic init alembic
+alembic revision --autogenerate -m "Update users table"
 alembic upgrade head
 ```

@@ -1,15 +1,11 @@
 console.log("✅ [custom gsap] activated");
 gsap.registerPlugin(ScrollTrigger);
 
-// const homeHerosectionCustomCardAnimation = {
-//     scale: 0.4,
-//     duration: 2,
-//     ease: "power2.inOut" ,
-//     stagger: 0.5
-// }
 
-function customGsap() {
+export function initGsapAnimations() {
   const main = document.getElementsByTagName("main")[0];
+
+  console.log("main", main)
 
   if (main.classList.contains("landing__main")) {
     gsap.to(".landing__h1", { y: -50 });
@@ -38,6 +34,10 @@ function customGsap() {
 
     return;
   }
+
+  if (main.classList.contains("dashboard__main")){
+    alert('dashboard')
+  }
+
 }
 
-customGsap()

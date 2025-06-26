@@ -19,11 +19,16 @@
 
 .landing__main,
 .login__main,
+.signup__main,
 .dashboard__main,
 .not-found__main,
 .error__main {
   align-items: center;
   justify-content: center;
+}
+
+.admin-dashbard__main {
+  flex-direction: column;
 }
 
 .home__main {

@@ -38,11 +38,9 @@
         </div>
         {% block custom_js %}
             <script 
-                src="{{ url_for('static', filename="js/bootstrapDebugger.js")}}">
+               type="module" src="{{ url_for('static', filename="js/main.js")}}">
             </script>
-            <script 
-                src="{{ url_for('static', filename="js/customGsap.js")}}">
-            </script>
+          
         {% endblock custom_js %}
     </body>
 
